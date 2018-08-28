@@ -5,14 +5,41 @@ import (
 	"testing"
 )
 
-func BenchmarkFib(b *testing.B) {
-	fibFuncs := []struct {
-		name string
-		f    func(int) int
+var fibFuncs = []struct {
+	name string
+	f    func(int) int
+}{
+	{"recursive", fibRecu},
+	{"iterative", fibIter},
+}
+
+func TestFib(t *testing.T) {
+	testCases := []struct {
+		n        int
+		expected int
 	}{
-		{"recursive", fibRecu},
-		{"iterative", fibIter},
+		{1, 1},
+		{2, 1},
+		{3, 2},
+		{4, 3},
+		{5, 5},
+		{6, 8},
+		{7, 13},
 	}
+	for _, tc := range testCases {
+		for _, fibFunc := range fibFuncs {
+			t.Run(fmt.Sprintf("%d for %s", tc.n, fibFunc.name), func(t *testing.T) {
+				got := fibFunc.f(tc.n)
+				if got != tc.expected {
+					t.Errorf("%s with input %d: expect %d, got %d",
+						fibFunc.name, tc.n, tc.expected, got)
+				}
+			})
+		}
+	}
+}
+
+func BenchmarkFib(b *testing.B) {
 	for _, fibFunc := range fibFuncs {
 		// calculate k'th Fibonacci number
 		for k := 10; k < 1001; k *= 10 {

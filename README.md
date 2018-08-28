@@ -1,18 +1,19 @@
-# dynamicP
-dynamic programming
+# dynamic programming
 
 * fibonacci numbers
+* knapsack problem
+* longest increasing substring
 
 
-## example
+## examples
 
-To run the command line
+To run the examples with manual input in the command line
 
 ```bash
-go run fibonacci/fib.go
+go run fib.go
 ```
 
-To see the benchmark results, run the following command in each folder
+To see the benchmark results, run the following command in each example folder
 
 ```bash
 go test -bench .

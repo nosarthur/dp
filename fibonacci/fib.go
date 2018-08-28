@@ -28,8 +28,8 @@ func fibRecu(n int) int {
 }
 
 func main() {
-	scanner := bufio.NewScanner(os.Stdin)
 	fmt.Println("Get the n'th Fibonacci number. Input n:")
+	scanner := bufio.NewScanner(os.Stdin)
 	scanner.Scan()
 	s := scanner.Text()
 	n, err := strconv.Atoi(s)
