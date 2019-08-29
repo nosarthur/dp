@@ -1,8 +1,11 @@
-# dynamic programming
+# golang-playground
 
-* fibonacci numbers
-* knapsack problem
-* longest increasing substring
+- dynamic programming
+    * fibonacci numbers
+    * knapsack problem
+    * longest increasing substring
+- divide and conquer
+    - quick sort
 
 
 ## examples
@@ -16,5 +19,5 @@ go run fib.go
 To see the benchmark results, run the following command in each example folder
 
 ```bash
-go test -bench .
+GOGC=off go test -bench .
 ```
